@@ -1,0 +1,49 @@
+html, body{
+    background-color: #343a40; ;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+#frame{
+    background-color: rgba(7, 6, 6, 0.833);
+    color: white;
+    width: 55rem;
+    height: 35rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#webCam {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#webCam h3{
+    padding-left: 10px;
+}
+#camera{
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#videoElement{
+    background-color: black;
+    width: 640px;
+    height: 480px;
+}
+
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #2d77afcb; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

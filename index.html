@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" href = "script.css"> <!-- Link to the external CSS file for styling -->
+    
+    <!-- Title of the webpage -->
+    <title>WebCam Application</title>
+</head>
+<body>
+    
+<!-- Main container for the webcam application -->
+<div id = 'frame'>
+
+    <!-- Div for the initial webcam application prompt -->
+    <div id ="webCam">
+        <h1>WebCam Application</h1>
+        <h3>Are you ready to turn on camera?</h3>
+        <button id  ='ready'>Yes, Im ready</button>
+    </div>
+
+    <!-- Div for the webcam interface, initially hidden -->
+    <div id = 'camera'>
+        <video id = "videoElement" autoplay ></video>
+        <button id = 'toggleButton'></button>
+    </div>
+</div>
+
+    <!-- External JavaScript file for interactive functionality -->
+    <script src = 'style.js'></script>
+
+</body>
+</html>
