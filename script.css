@@ -25,18 +25,18 @@ html, body{
 #webCam h3{
     padding-left: 10px;
 }
+
 #camera{
     display: none;
     justify-content: center;
     flex-direction: column;
 }
 
-#videoElement{
+#videoFromUserCamera{
     background-color: black;
     width: 640px;
     height: 480px;
 }
-
 
 button {
     margin-top: 15px;
