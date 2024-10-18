@@ -1,11 +1,11 @@
 // Get references to necessary DOM elements
-const ready = document.getElementById('ready')
+const readyToTurnOnCamera = document.getElementById('readyToTurnOnCamera')
 const webCam = document.getElementById('webCam')
-const videoElement = document.getElementById('videoElement')
-const toggleButton = document.getElementById('toggleButton')
+const videoFromUserCamera = document.getElementById('videoFromUserCamera')
+const toggleButtonToTurnOnOrOff = document.getElementById('toggleButton')
 const camera = document.getElementById('camera')
 
-let cameraState = true; // Boolean to track the current state of the camera (on/off)
+let cameraTurnOn = true; // Boolean to track the current state of the camera (on/off)
 let stream; // Variable to store the media stream
 
 // Check if the device supports camera access
@@ -13,53 +13,67 @@ if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
   alert('this device does not support camera')
   }
 
-// Function to request camera access and start the video stream
-function turnOnCamera(){
-  navigator.mediaDevices.getUserMedia({video : true})
-  .then(function(mediaStream){
-    camera.style.display = 'flex'; // Show the camera div when stream is active
-    stream = mediaStream; // Store the media stream globally for later use
-    videoElement.srcObject = stream;
-    toggleButton.textContent = 'Turn Off Camera';
-    })
-  
-  .catch(function(error) {
+// Async function to request camera access and start the video stream
+async function turnOnCamera() {
+  try {
+    // Request camera access
+    const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+    // Store the media stream globally for later use
+    stream = mediaStream; 
+    
+    // Set the video source to the media stream
+    videoFromUserCamera.srcObject = stream;
+    
+    // Show the camera div when stream is active
+    camera.style.display = 'flex'; 
+
+    // Change the toggle button text to 'Turn Off Camera'
+    toggleButtonToTurnOnOrOff.textContent = 'Turn Off Camera';
+
+  } catch (error) {
     // Show error message if accessing the camera fails
-    alert("Error accessing the camera\nPlease reloading and allow to access camera")
-    })
-};
+    alert("Error accessing the camera\nPlease reload and allow access to the camera");
+  }
+}
 
 // Function to pause the camera (stop displaying the stream without releasing the camera)
 function pause(){
-  videoElement.srcObject = null;
+  videoFromUserCamera.srcObject = null;
 };
 
 // Function to resume the camera (display the stream again)
 function resume(){
-  videoElement.srcObject = stream;
+  videoFromUserCamera.srcObject = stream;
 }
 
-// Event listener for the "I'm ready" button
-ready.addEventListener('click' ,  () => {
-  webCam.style.display = 'none'; // Hide the readiness prompt
-  videoElement.style.display = 'block'; // Show the video element
-  turnOnCamera(); // Call the function to start the camera
+// Event listener "click" for the "I'm ready" button
+readyToTurnOnCamera.addEventListener('click' ,  () => {
+  // Hide the readiness prompt
+  webCam.style.display = 'none';
+
+  // Show the video element
+  videoFromUserCamera.style.display = 'block'; 
+
+  // Call the function to start the camera
+  turnOnCamera(); 
 })
 
-
-// Event listener for the toggle button to turn the camera on/off
-toggleButton.addEventListener('click' , () => {
-  if(cameraState == true){
-    // If camera is currently on, pause the stream
+// Event listener "click" for the toggle button to turn the camera on/off
+toggleButtonToTurnOnOrOff.addEventListener('click' , () => {
+  
+  // If camera is currently on, pause the stream and toggle button to turn on
+  if(cameraTurnOn == true){
     pause();
-    toggleButton.textContent= 'Turn On Camera';
+    toggleButtonToTurnOnOrOff.textContent= 'Turn On Camera';
   }
+
+  // If camera is off, resume the stream and toggle to button to turn off
   else{
-    // If camera is off, resume the stream
     resume();
-    toggleButton.textContent = 'Turn Off Camera';
+    toggleButtonToTurnOnOrOff.textContent = 'Turn Off Camera';
   }
 
-  cameraState = !cameraState
+  // Change the state of camera
+  cameraTurnOn = !cameraTurnOn
 })
-
