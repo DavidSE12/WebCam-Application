@@ -51,10 +51,7 @@ function resume(){
 readyToTurnOnCamera.addEventListener('click' ,  () => {
   // Hide the readiness prompt
   webCam.style.display = 'none';
-
-  // Show the video element
-  videoFromUserCamera.style.display = 'block'; 
-
+  
   // Call the function to start the camera
   turnOnCamera(); 
 })
