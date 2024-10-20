@@ -31,6 +31,19 @@ async function turnOnCamera() {
     // Change the toggle button text to 'Turn Off Camera'
     toggleButtonToTurnOnOrOff.textContent = 'Turn Off Camera';
 
+    // Give compliment for user
+    setTimeout( () =>{
+      document.getElementById('compliment').innerHTML = "Wow</br>you</br>are</br>handsome!!!"
+    }, 1500)
+
+    setTimeout( () =>{
+      document.getElementById('compliment').innerHTML = "Have</br>a</br>nice</br>day"
+    }, 3500)
+
+    setTimeout( () =>{
+      document.getElementById("compliment").style.display = 'none'
+    }, 5500)
+    
   } catch (error) {
     // Show error message if accessing the camera fails
     alert("Error accessing the camera\nPlease reload and allow access to the camera");
