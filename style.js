@@ -87,6 +87,6 @@ toggleButtonToTurnOnOrOff.addEventListener('click' , () => {
     toggleButtonToTurnOnOrOff.textContent = 'Turn Off Camera';
   }
 
-  // Change the state of camera
+  // Toggle camera state to ON if currently Off, otherwise Off if currently On 
   cameraTurnOn = !cameraTurnOn
 })
