@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Link to the external CSS file for styling the webpage -->
+    <link rel="stylesheet" href="script.css">
+    
+    <!-- Title of the webpage that appears in the browser tab -->
+    <title>WebCam Application</title>
+</head>
+
+<body>
+
+<!-- Main container for the webcam application interface -->
+<div id='frame'>
+
+    <!-- Initial div that prompts the user to start the webcam -->
+    <div id="webCam">
+
+         <!-- Brief message asking the user if they're ready to activate the camera -->
+        <h1>WebCam Application</h1>
+
+        <!-- Brief message asking the user if they're ready to activate the camera -->
+        <h3>Are you ready to turn on camera?</h3>
+
+        <!-- Button to confirm that the user is ready to turn on the camera -->
+        <button id='readyToTurnOnCamera'>Yes, I'm ready</button>
+
+    </div>
+
+    <!-- Div for the webcam interface, hidden initially and displayed when the camera is turned on -->
+    <div id='camera'>
+
+        <!-- Video element to display the webcam feed -->
+        <video id="videoFromUserCamera" autoplay></video>
+
+        <!-- Button to toggle the webcam feed (start/stop) -->
+        <button id='toggleButton'></button>
+
+    </div>
+
+    <!-- Compliment paragraph send to user -->
+    <p id = "compliment"></p>
+</div>
+
+    <!-- Link to the external JavaScript file that will handle the webcam functionality -->
+    <script src='style.js'></script>
+
+</body>
+</html>
